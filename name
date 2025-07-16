@@ -1,0 +1,42 @@
+import time
+
+# Mock function to get real-time price (replace with actual API in real app)
+def get_mock_price(asset_symbol):
+    mock_prices = {
+        'AAPL': 195.32,
+        'GOOGL': 2850.60,
+        'BTC': 64950.20,
+        'ETH': 3420.15,
+        'TSLA': 246.78
+    }
+    return mock_prices.get(asset_symbol.upper(), 0.0)
+
+# Sample user portfolio (you can also ask for user input)
+portfolio = [
+    {'symbol': 'AAPL', 'quantity': 10},
+    {'symbol': 'GOOGL', 'quantity': 2},
+    {'symbol': 'BTC', 'quantity': 0.1},
+    {'symbol': 'ETH', 'quantity': 1.5},
+    {'symbol': 'TSLA', 'quantity': 5}
+]
+
+def display_portfolio(portfolio):
+    total_value = 0
+    print("\n📈 Portfolio Summary:")
+    print("-" * 40)
+    print(f"{'Asset':<8} {'Qty':<10} {'Price':<10} {'Value':<10}")
+    print("-" * 40)
+
+    for asset in portfolio:
+        symbol = asset['symbol']
+        qty = asset['quantity']
+        price = get_mock_price(symbol)
+        value = qty * price
+        total_value += value
+        print(f"{symbol:<8} {qty:<10} {price:<10.2f} {value:<10.2f}")
+
+    print("-" * 40)
+    print(f"{'Total Portfolio Value:':<30} ${total_value:.2f}\n")
+
+# Run the portfolio tracker
+if __name
